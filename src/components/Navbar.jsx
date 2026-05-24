@@ -32,12 +32,14 @@ const Navbar = () => {
       }}
     >
       <div style={styles.container}>
+        {/* Logo */}
         <a href="#hero" style={styles.logo}>
           <span style={styles.bruh}>bruh.</span>
           <span style={styles.vision}>vision</span>
         </a>
 
-        <div style={styles.desktopMenu}>
+        {/* Desktop Menu */}
+        <div className="desktop-menu" style={styles.desktopMenu}>
           {navLinks.map((link) => (
             <a key={link.name} href={link.href} style={styles.navLink}>
               {link.name}
@@ -45,14 +47,16 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div style={styles.mobileIcon} onClick={() => setIsOpen(!isOpen)}>
+        {/* Mobile Hamburger Icon */}
+        <div className="mobile-icon" style={styles.mobileIcon} onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <FiX size={28} /> : <FiMenu size={28} />}
         </div>
       </div>
 
+      {/* Mobile Dropdown Menu */}
       <motion.div
         initial={false}
-        animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
+        animate={isOpen ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
         transition={{ duration: 0.3 }}
         style={styles.mobileMenu}
       >
@@ -104,11 +108,10 @@ const styles = {
     textDecoration: 'none',
     fontSize: '1rem',
     fontWeight: 500,
-    position: 'relative',
-    paddingBottom: '5px',
+    transition: 'color 0.3s',
   },
   mobileIcon: {
-    display: 'none',
+    display: 'none',  // Hidden on desktop
     cursor: 'pointer',
   },
   mobileMenu: {
@@ -127,12 +130,24 @@ const styles = {
   },
 };
 
-// Add responsive styles via style tag
+// Inject responsive CSS (this ensures it works even if external CSS fails)
 const styleSheet = document.createElement('style');
 styleSheet.textContent = `
   @media (max-width: 768px) {
-    .desktop-menu { display: none; }
-    .mobile-icon { display: block; }
+    .desktop-menu {
+      display: none !important;
+    }
+    .mobile-icon {
+      display: block !important;
+    }
+  }
+  @media (min-width: 769px) {
+    .mobile-icon {
+      display: none !important;
+    }
+    .desktop-menu {
+      display: flex !important;
+    }
   }
 `;
 document.head.appendChild(styleSheet);
