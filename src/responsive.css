@@ -1,0 +1,110 @@
+/* responsive.css - Mobile-first responsive overrides */
+
+/* Tablets and below */
+@media (max-width: 1024px) {
+  section {
+    padding: 60px 20px !important;
+  }
+  
+  h2 {
+    font-size: 2rem !important;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  /* General */
+  body {
+    font-size: 14px;
+  }
+  
+  section {
+    padding: 50px 16px !important;
+  }
+  
+  h2 {
+    font-size: 1.8rem !important;
+    padding-left: 12px !important;
+  }
+  
+  /* Navbar */
+  .desktop-menu {
+    display: none !important;
+  }
+  
+  .mobile-icon {
+    display: block !important;
+  }
+  
+  /* Hero */
+  .hero-title {
+    font-size: 2.8rem !important;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px !important;
+  }
+  
+  .hero-buttons a {
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Services grid */
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  
+  /* Gallery grid */
+  .gallery-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  
+  /* Contact section */
+  .contact-content {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+  
+  .contact-info {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+  }
+  
+  .info-card {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  /* Footer */
+  .footer-social {
+    gap: 20px !important;
+  }
+}
+
+/* Small phones (below 480px) */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem !important;
+  }
+  
+  .btn-primary, .btn-secondary {
+    padding: 12px 24px !important;
+    font-size: 0.9rem !important;
+  }
+  
+  .info-card {
+    min-width: 100% !important;
+  }
+  
+  .modal-content {
+    width: 95vw !important;
+  }
+}
