@@ -3,13 +3,53 @@ import { motion } from 'motion/react';
 import { useInView } from 'react-intersection-observer';
 import { FiX } from 'react-icons/fi';
 
+// Import your 6 images (place them in src/assets/gallery/)
+import p1 from '../assets/gallery/p1.jpeg';
+import p2 from '../assets/gallery/p2.jpeg';
+import p3 from '../assets/gallery/p3.jpeg';
+import p4 from '../assets/gallery/p4.jpeg';
+import p5 from '../assets/gallery/p5.jpeg';
+import p6 from '../assets/gallery/p6.jpeg';
+
+// Create projects array with your images
+// Update titles, categories, and descriptions as needed
 const projects = [
-  { id: 1, title: 'Neon Dreams', category: 'Cinematography', img: 'https://placehold.co/800x1000/1a1a1a/e31b1b?text=Project+1' },
-  { id: 2, title: 'Urban Decay', category: 'Photography', img: 'https://placehold.co/800x800/1a1a1a/e31b1b?text=Project+2' },
-  { id: 3, title: 'Silent Echo', category: 'Videography', img: 'https://placehold.co/800x1200/1a1a1a/e31b1b?text=Project+3' },
-  { id: 4, title: 'Midnight Run', category: 'Cinematography', img: 'https://placehold.co/800x900/1a1a1a/e31b1b?text=Project+4' },
-  { id: 5, title: 'Fragments', category: 'Photography', img: 'https://placehold.co/800x1100/1a1a1a/e31b1b?text=Project+5' },
-  { id: 6, title: 'Velocity', category: 'Videography', img: 'https://placehold.co/800x700/1a1a1a/e31b1b?text=Project+6' },
+  {
+    id: 1,
+    title: 'Honey Bee',
+    category: 'Portrait',
+    img: p1,
+  },
+  {
+    id: 2,
+    title: 'Sunset',
+    category: 'Weather',
+    img: p2,
+  },
+  {
+    id: 3,
+    title: 'Lord Hanuman',
+    category: 'statue',
+    img: p3,
+  },
+  {
+    id: 4,
+    title: 'Chandelier',
+    category: 'chandelier',
+    img: p4,
+  },
+  {
+    id: 5,
+    title: 'Chandelier',
+    category: 'chandelier',
+    img: p5,
+  },
+  {
+    id: 6,
+    title: 'CT Group',
+    category: 'institute',
+    img: p6,
+  },
 ];
 
 const Gallery = () => {
@@ -30,7 +70,7 @@ const Gallery = () => {
   };
 
   return (
-    <section id="gallery" style={{ padding: '80px 5%', background: '#050505' }}>
+    <section id="gallery" style={styles.section}>
       <div style={styles.container}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -40,8 +80,10 @@ const Gallery = () => {
         >
           <span style={styles.badge}>Portfolio</span>
           <h2 style={styles.title}>
-            Featured <span className="gradient-text">Work</span>
+            Captured <span className="gradient-text">Moments</span>
           </h2>
+          <p style={styles.subtitle}>
+          </p>
         </motion.div>
 
         <motion.div
@@ -69,6 +111,7 @@ const Gallery = () => {
         </motion.div>
       </div>
 
+      {/* Lightbox Modal */}
       {selected && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -92,18 +135,38 @@ const Gallery = () => {
 };
 
 const styles = {
-  container: { maxWidth: '1400px', margin: '0 auto' },
-  header: { textAlign: 'center', marginBottom: 'clamp(40px, 8vw, 60px)' },
+  section: {
+    padding: '80px 5%',
+    background: '#050505',
+  },
+  container: {
+    maxWidth: '1400px',
+    margin: '0 auto',
+  },
+  header: {
+    textAlign: 'center',
+    marginBottom: 'clamp(40px, 8vw, 60px)',
+  },
   badge: {
     fontSize: 'clamp(0.7rem, 3vw, 0.8rem)',
     letterSpacing: '3px',
     color: '#e31b1b',
     textTransform: 'uppercase',
   },
-  title: { fontSize: 'clamp(1.8rem, 6vw, 3rem)', fontWeight: 700, marginTop: '10px' },
+  title: {
+    fontSize: 'clamp(1.8rem, 6vw, 3rem)',
+    fontWeight: 700,
+    marginTop: '10px',
+  },
+  subtitle: {
+    color: '#aaa',
+    maxWidth: '600px',
+    margin: '20px auto 0',
+    fontSize: 'clamp(0.85rem, 3vw, 1rem)',
+  },
   grid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
     gap: 'clamp(16px, 3vw, 20px)',
   },
   card: {
@@ -129,8 +192,16 @@ const styles = {
     transform: 'translateY(100%)',
     transition: 'transform 0.3s',
   },
-  category: { fontSize: 'clamp(0.7rem, 3vw, 0.75rem)', color: '#e31b1b', marginBottom: '5px' },
-  projectTitle: { fontSize: 'clamp(1rem, 4vw, 1.2rem)', fontWeight: 600, color: '#fff' },
+  category: {
+    fontSize: 'clamp(0.7rem, 3vw, 0.75rem)',
+    color: '#e31b1b',
+    marginBottom: '5px',
+  },
+  projectTitle: {
+    fontSize: 'clamp(1rem, 4vw, 1.2rem)',
+    fontWeight: 600,
+    color: '#fff',
+  },
   modal: {
     position: 'fixed',
     top: 0,
@@ -159,18 +230,25 @@ const styles = {
     cursor: 'pointer',
     fontSize: 'clamp(20px, 5vw, 28px)',
   },
-  modalImage: { maxWidth: '100%', maxHeight: '70vh', borderRadius: '12px' },
-  modalTitle: { color: '#fff', marginTop: '20px', fontSize: 'clamp(1.2rem, 5vw, 1.5rem)' },
-  modalCategory: { color: '#e31b1b', marginTop: '5px' },
+  modalImage: {
+    maxWidth: '100%',
+    maxHeight: '70vh',
+    borderRadius: '12px',
+  },
+  modalTitle: {
+    color: '#fff',
+    marginTop: '20px',
+    fontSize: 'clamp(1.2rem, 5vw, 1.5rem)',
+  },
+  modalCategory: {
+    color: '#e31b1b',
+    marginTop: '5px',
+  },
 };
 
-// Add hover styles
+// Hover effects (only on desktop)
 const styleSheet = document.createElement('style');
 styleSheet.textContent = `
-  @media (max-width: 768px) {
-    .card:hover img { transform: none; }
-    .card:hover .overlay { transform: translateY(0); }
-  }
   @media (min-width: 769px) {
     .card:hover img { transform: scale(1.05); }
     .card:hover .overlay { transform: translateY(0); }
