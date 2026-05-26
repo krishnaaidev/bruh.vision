@@ -5,11 +5,11 @@ import { FiX } from 'react-icons/fi';
 
 // Import your 6 images (place them in src/assets/gallery/)
 import p1 from '../assets/gallery/p1.jpeg';
-import p2 from '../assets/gallery/p2.jpeg';
-import p3 from '../assets/gallery/p3.jpeg';
-import p4 from '../assets/gallery/p4.jpeg';
-import p5 from '../assets/gallery/p5.jpeg';
-import p6 from '../assets/gallery/p6.jpeg';
+import p2 from '../assets/gallery/p2.png';
+import p3 from '../assets/gallery/p3.png';
+import p4 from '../assets/gallery/p4.png';
+import p5 from '../assets/gallery/p5.png';
+import p6 from '../assets/gallery/p6.png';
 
 // Create projects array with your images
 // Update titles, categories, and descriptions as needed
